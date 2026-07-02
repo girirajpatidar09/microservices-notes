@@ -3,12 +3,8 @@
 ## What is monolithic application ?
 ``` text
 🔹 What is a Monolithic Application?
-A Monolithic Application is a software architecture where the entire application is built as a single unit.
-
-->All components are tightly integrated:
-UI (frontend)
-Business logic
-Database access
+A Monolithic Application is a software architecture where the entire application is built as a single unit.Single large codebase ,single Database
+, everything tightly coupled.
 
 
 🔹 Simple Idea
@@ -127,6 +123,9 @@ Orders → another service
 
 
 Each service works independently but connects with others.
+
+
+# Cons : Complecity in communication , Distributed tracing and data consistency
 
 ```
 ---
