@@ -17,6 +17,30 @@ Takes orders
 Cooks food
 Serves customers
 
+
+
+# Drwabacks of Monolithic architecture
+
+
+
+1) Single Point of failure :: 
+  
+    In a monolithic application, all modules (User, Product, Order, Payment, etc.) run inside one application.Now imagine the Payment Module has a 
+	bug and causes the application to crash.If the application crashes, every feature becomes unavailable.
+
+2) Re-Deploy entire app ::
+
+   Even if you change only one small feature, you must rebuild and deploy the entire application.
+   
+3) Maintenence of the app ::
+     As the application grows, it becomes difficult to understand, update, and fix.
+	 
+4) Burden on server :: 
+    
+	In a monolithic application, all modules run on the same server.
+    If one module receives heavy traffic, you must scale the entire application, even though the other modules are not busy.
+
+
 ```
 ---
 
