@@ -106,9 +106,12 @@ Each service works independently but connects with others.
 
 ## Microservices Architecture
 
+![Microservices Architecture](images/microservices-architecture.jpeg)
+
+
 ```text
 
-  ![Microservices Architecture](images/microservices-architecture.jpeg)
+  
 
 
 -> There is no standard architecture for Microservices development
