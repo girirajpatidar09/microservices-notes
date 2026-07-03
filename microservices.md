@@ -104,6 +104,33 @@ Each service works independently but connects with others.
 ```
 ---
 
+## Microservices Architecture
+
+```text
+
+  ![Monolithic Architecture](images/microservices-architecture.jpeg)
+
+
+-> There is no standard architecture for Microservices development
+
+-> People are customizing microservices project architecture according to their requirement.
+
+
+1) Service Registry
+2) Admin Server
+3) Zipkin Server
+4) Backend Services (REST APIs)
+5) API Gateway
+6) Feign Client
+7) Config Server
+8) Apache Kafka
+9) Redis Cache
+10) Docker
+
+```
+---
+
+
 
 
 
