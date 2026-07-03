@@ -169,55 +169,44 @@ A Service Registry is a central directory where all the microservices register t
 
 
 
-# How Spring Boot Admin Works :: 
+How it works ::
 
-## Step 1: Admin Server Starts
+Step 1: Admin Server starts
 
-```
 Spring Boot Admin Server
-          │
-          ▼
+
+↓
 Waits for applications to register.
-```
 
----
+Step 2: Microservices register
 
-## Step 2: Microservices Register
+User Service  ------------\
+Order Service  ------------> Admin Server
+Payment Service ----------/
 
-```
-User Service      -----------\
-Order Service     ------------> Spring Boot Admin Server
-Payment Service   -----------/
-```
+The Admin Server now knows about all running services.
 
-The **Spring Boot Admin Server** now knows about all running services.
+Step 3: Dashboard
 
----
+-----------------------------------
+Spring Boot Admin Dashboard
+-----------------------------------
+User Service        UP
+Order Service       UP
+Payment Service     DOWN
+Inventory Service   UP
+-----------------------------------
 
-## Step 3: Dashboard
+You can click a service to see more details such as:
 
-```
-+--------------------------------------+
-|      Spring Boot Admin Dashboard     |
-+--------------------------------------+
-| User Service        : UP             |
-| Order Service       : UP             |
-| Payment Service     : DOWN           |
-| Inventory Service   : UP             |
-+--------------------------------------+
-```
+Health
+Metrics
+Beans
+Environment
+Configuration
+Loggers
+Mappings
 
-You can click on any service to view detailed information, including:
-
-- ❤️ Health
-- 📊 Metrics
-- 🌱 Beans
-- 🌍 Environment
-- ⚙️ Configuration
-- 📝 Loggers
-- 🛣️ Mappings
-
----
 
 
 
