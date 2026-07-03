@@ -108,7 +108,7 @@ Each service works independently but connects with others.
 
 ```text
 
-  ![Monolithic Architecture](images/microservices-architecture.jpeg)
+  ![Microservices Architecture](images/microservices-architecture.jpeg)
 
 
 -> There is no standard architecture for Microservices development
