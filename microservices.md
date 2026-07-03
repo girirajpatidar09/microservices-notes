@@ -207,11 +207,64 @@ Configuration
 Loggers
 Mappings
 
+```
+---
 
+## Zipkin Server
 
+```text
+
+ A Zipkin Server is used for distributed tracing in a microservices architecture.
+
+When a single user request passes through multiple microservices, Zipkin helps you trace the complete journey of that request and identify where 
+time is being spent or where failures occur.
+
+-> It is Used for Distributed tracing
+
+-> Using zipkin server, we can monitor which api is taking more time to process request.
+
+-> Using Zipkin we can understand how many apis involved in request processing.
 
 ```
 ---
+
+## Backend apis
+``` text
+
+-> Backend apis contains business logic
+
+-> Backend apis are also called as REST APIs / services / microservices
+
+	Ex: payment-api, cart-api, flights-api, hotels-api
+
+Note: Backend api can register as client for Service Registry, Admin server & Zipkin server (It is optional)
+
+```
+---
+
+
+## FeignClient
+
+``` text
+
+-> It is provided by spring cloud libraries
+
+-> It is used for Inter Service Communication
+
+-> Inter service communication means one api is accessing another api using Service Registry. 
+
+Note: External communication means accessing third party apis.
+
+-> When we are using FeignClient we no need mention URL of the api to access. Using service name feign client will get service URL from s
+service registry.
+
+-> Feign Client uses Ribbon to perform Client side load balancing.
+
+```
+---
+
+
+
 
 
 
