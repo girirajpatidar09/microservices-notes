@@ -100,6 +100,16 @@ Simple Summary
 Easy to start
 Hard to scale, maintain, and evolve
 
+
+
+# Conclusion
+
+1. Single point of failure.
+2. Re-Deploy entire app.
+3. Maintenenece of app.
+4. Burden on Server.
+
+
 ```
 ---
 
@@ -107,6 +117,7 @@ Hard to scale, maintain, and evolve
 ## What are microservices ?
 ```
 Microservices (simple definition):
+It is an architectural desing pattern
  Microservices is a way of building an application by dividing it into small, independent parts (services), where each part does one specific job and works 
 on its own.
 
