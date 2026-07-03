@@ -147,9 +147,79 @@ A Service Registry is a central directory where all the microservices register t
 
 -> It provides no.of instances available for each service.
 
+-> If a service crashes, it is removed from the registry.
+
 -> We can use Eureka Server as a service registry
 
 -> Eureka server provided by Spring Cloud Netflix library
+
+```
+---
+
+## Admin Server 
+
+```text 
+
+-> Actuators  are used to monitor and manage our applications
+
+-> Monitoring and managing all the apis seperatley is a challenging task
+
+-> Admin Server Provides an user interface to monitor and manage all the apis at one place using actuator endpoints.
+
+
+
+
+# How Spring Boot Admin Works :: 
+
+## Step 1: Admin Server Starts
+
+```
+Spring Boot Admin Server
+          │
+          ▼
+Waits for applications to register.
+```
+
+---
+
+## Step 2: Microservices Register
+
+```
+User Service      -----------\
+Order Service     ------------> Spring Boot Admin Server
+Payment Service   -----------/
+```
+
+The **Spring Boot Admin Server** now knows about all running services.
+
+---
+
+## Step 3: Dashboard
+
+```
++--------------------------------------+
+|      Spring Boot Admin Dashboard     |
++--------------------------------------+
+| User Service        : UP             |
+| Order Service       : UP             |
+| Payment Service     : DOWN           |
+| Inventory Service   : UP             |
++--------------------------------------+
+```
+
+You can click on any service to view detailed information, including:
+
+- ❤️ Health
+- 📊 Metrics
+- 🌱 Beans
+- 🌍 Environment
+- ⚙️ Configuration
+- 📝 Loggers
+- 🛣️ Mappings
+
+---
+
+
 
 ```
 ---
