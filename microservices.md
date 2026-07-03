@@ -260,9 +260,23 @@ service registry.
 
 -> Feign Client uses Ribbon to perform Client side load balancing.
 
+ Note: Ribbon is deprecated. It has been replaced by Spring Cloud LoadBalancer.
+
+
+
 ```
 ---
 
+
+## Load Balancing 
+
+```text 
+
+Load Balancing is the process of distributing incoming requests across multiple instances of the same service so that no single instance 
+becomes overloaded.
+
+```
+---
 
 
 
