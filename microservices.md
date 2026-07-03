@@ -112,8 +112,6 @@ Each service works independently but connects with others.
 ```text
 
   
-
-
 -> There is no standard architecture for Microservices development
 
 -> People are customizing microservices project architecture according to their requirement.
@@ -132,6 +130,30 @@ Each service works independently but connects with others.
 
 ```
 ---
+
+
+##  Service Registry 
+
+``` text
+
+A Service Registry is a central directory where all the microservices register themselves so that other services can find and communicate with them.
+
+
+-> Service Registry is used to maintain list of services available in the project.
+
+-> It provides information about registered services like
+
+		Name of service, url of service, status of service
+
+-> It provides no.of instances available for each service.
+
+-> We can use Eureka Server as a service registry
+
+-> Eureka server provided by Spring Cloud Netflix library
+
+```
+---
+
 
 
 
