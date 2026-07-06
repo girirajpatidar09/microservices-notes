@@ -278,6 +278,248 @@ becomes overloaded.
 ```
 ---
 
+## API Gateway 
+
+``` text 
+An API Gateway is the single entry point for all client requests in a microservices architecture.
+
+Instead of the client calling individual microservices directly, it sends all requests to the API Gateway. The gateway then routes each request 
+to the appropriate microservice.
+
+In Spring Boot, Spring Cloud Gateway is the recommended API Gateway implementation.
+
+
+> API Gateway is used to manage our project backend apis
+
+-> API Gateway acts as mediator between user requests and backend apis
+
+-> API Gateway acts as entrypoint for all backend apis
+
+-> In API Gateway we will have 2 types of logics
+
+		1) Request Filter : To validate the request (go / no-go)
+
+		2) Request Router : forward request to particular backend-api based on URL Pattern
+
+				/hotels => hotels - api
+
+				/flights => flights - api
+
+				/trains => trains - api
+
+
+```
+---
+
+## What is Routing?
+
+```text
+
+Routing is the process of sending an incoming request to the correct microservice based on predefined rules, such as the request URL, HTTP method, 
+headers, or other criteria.
+
+Routing is one of the main responsibilities of an API Gateway.
+
+``` 
+---
+
+
+## Steps to develop Service Registry Application (Eureka Server)
+```text
+1) Create Service Registry application with below dependency
+
+	 - EurekaServer (spring-cloud-starter-netflix-eureka-server)
+
+2) Configure @EnableEurekaServer annotation in boot start class
+
+3) Configure below properties in application.yml file
+
+server:
+  port: 8761
+  
+eureka:
+  client:
+    register-with-eureka: false
+
+Note: If Service-Registry project port is 8761 then clients can discover service-registry and will register automatically with service-registry. If service-registry project running on any other port number then we have to register clients with service-registry manually.
+
+4) Once application started we can access Eureka Dashboard using below URL
+
+		URL : http://localhost:8761/
+		
+		
+		
+# What is the purpose @EnableEurekaServer ?
+
+@EnableEurekaServer is used to convert a Spring Boot application into a Eureka Server (Service Registry).
+
+Why do we need @EnableEurekaServer?
+
+In a microservices architecture, there can be many services:
+
+User Service
+Order Service
+Payment Service
+Inventory Service
+
+Instead of every service remembering the IP address and port of every other service, they all register with the Eureka Server.
+
+The Eureka Server acts like a phone directory or service registry.
+
+               Eureka Server
+             (Service Registry)
+                    |
+        --------------------------
+        |     |      |          |
+     User   Order  Payment  Inventory
+    Service Service Service   Service
+	
+	
+	
+# eureka.client.register-with-eureka=false  Why we use this property ?
+  
+ A Eureka Server also contains Eureka Client functionality. By default, it tries to register itself with another Eureka Server.
+If you have only one Eureka Server, there is no other server to register with. Therefore, we disable self-registration.
+	
+```
+---
+
+## Steps to develop Spring Admin-Server
+```text
+
+1) Create Boot application with admin-server dependency 
+	(select it while creating the project)
+
+2) Configure @EnableAdminServer annotation at start class
+
+3) Change Port Number (Optional)
+
+4) Run the boot application
+
+5) Access application URL in browser (We can see Admin Server UI)
+
+
+@EnableAdminServer is used to convert a Spring Boot application into a Spring Boot Admin Server. It provides a web 
+dashboard to monitor and manage Spring Boot applications.
+
+
+```
+---
+
+
+## Difference between Eureka Server and  Admin Server
+```text
+| Eureka Server                  | Spring Boot Admin Server              |
+| ------------------------------ | ------------------------------------- |
+| Used for **Service Discovery** | Used for **Monitoring**               |
+| Stores service locations       | Displays health and metrics           |
+| Helps services find each other | Helps developers monitor applications |
+| Maintains a service registry   | Provides a monitoring dashboard       |
+
+```
+---
+
+## Steps to work with Zipkin Server
+======================================
+
+```text
+1) Download Zipin Jar file 
+
+		URL : https://zipkin.io/pages/quickstart.html
+
+2) Run zipkin jar file 
+
+		$ java -jar <jar-name>
+
+3) Zipkin Server Runs on Port Number 9411
+
+4) Access zipkin server dashboard
+
+		URL : http://localhost:9411/
+		
+```
+---
+
+## @EnableDiscoveryClient 
+
+```text
+@EnableDiscoveryClient is used to enable a Spring Boot application to register with a Service Registry (such as Eureka) 
+and discover other registered services.
+```
+---
+
+
+##  Steps to develop WELCOME-API
+
+```text
+
+1) Create Spring Boot application with below dependencies
+
+		- eureka-discovery-client
+		- starter-web
+		- devtools
+		- actuator
+		- zipkin
+		- admin-client
+
+2) Configure @EnableDiscoveryClient annotation at boot start class
+
+3) Create RestController with required method
+
+4) Configure below properties in application.yml file
+
+-----------------------application.yml-----------------------------------------
+server:
+  port: 1111
+
+spring:
+  application:
+    name: WELCOME-API
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+-------------------------------------------------------------------
+
+5) Run the application and check in Eureka Dashboard (It should display in eureka dashboard)
+
+6) Check Admin Server Dashboard (It should display) (we can access application details from here)
+
+	Ex: Beans, loggers, heap dump, thred dump, metrics, mappings etc...
+
+
+7) Send Request to REST API method
+
+8) Check Zipkin Server UI and click on Run Query button
+	(it will display trace-id with details)
+	
+```
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
